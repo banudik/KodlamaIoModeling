@@ -12,6 +12,6 @@ public interface IInstructorDal
     void Add(Instructor instructor);
     void Delete (Instructor instructor);
     void Update (Instructor instructor);
-    List<Instructor> GetInstructors();
-    Instructor GetInstructor(int id);
+    List<Instructor> GetAll();
+    Instructor GetById(int id);
 }

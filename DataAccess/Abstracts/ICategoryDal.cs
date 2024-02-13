@@ -12,6 +12,6 @@ public interface ICategoryDal
     void Add(Category category);
     void Delete(Category category);
     void Update(Category category);
-    List<Category> GetCategories();
-    Category GetCategory(int id);
+    List<Category> GetAll();
+    Category GetById (int id);
 }

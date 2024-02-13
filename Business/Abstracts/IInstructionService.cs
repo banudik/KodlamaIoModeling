@@ -1,15 +1,14 @@
-﻿using KodlamaIoModelleme.Business.Dtos.Requests;
-using KodlamaIoModelleme.Business.Dtos.Responses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using KodlamaIoModelleme.Business.Dtos.Requests.Instruction;
+using KodlamaIoModelleme.Business.Dtos.Responses.Instruction;
 
 namespace KodlamaIoModelleme.Business.Abstracts;
 
 public interface IInstructionService
 {
     void Add(CreateInstructionRequest instruction);
-    List<GetAllInstructionResponse> GetInstructions();
+    void Delete(DeleteInstructionRequest instruction);
+    void Update(UpdateInstructionRequest instruction);
+    List<GetAllInstructionResponse> GetAll();
+    List<GetByIdInstructionResponse> GetById(int id);
+    
 }

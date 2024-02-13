@@ -34,7 +34,7 @@ public class ImInstructionDal : IInstructionDal
         instructions.Remove(value);
     }
 
-    public Instruction GetInstruction(int id)
+    public Instruction GetById (int id)
     {
         var value = instructions.FirstOrDefault(i => i.Id == id);
         return value;
@@ -49,6 +49,11 @@ public class ImInstructionDal : IInstructionDal
     {
         var value = instructions.FirstOrDefault(i => i.Id == instruction.Id);
         value.Name = instruction.Name;
+        value.Description = instruction.Description;
+        value.InstructorId = instruction.InstructorId;
+        value.ImageUrl = instruction.ImageUrl;
+        value.Price = instruction.Price;
+
         
     }
 }

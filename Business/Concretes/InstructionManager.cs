@@ -1,13 +1,10 @@
 ﻿using KodlamaIoModelleme.Business.Abstracts;
-using KodlamaIoModelleme.Business.Dtos.Requests;
-using KodlamaIoModelleme.Business.Dtos.Responses;
+using KodlamaIoModelleme.Business.Dtos.Requests.Instruction;
+using KodlamaIoModelleme.Business.Dtos.Responses.Category;
+using KodlamaIoModelleme.Business.Dtos.Responses.Instruction;
 using KodlamaIoModelleme.DataAccess.Abstracts;
+using KodlamaIoModelleme.DataAccess.Concretes.InMemory;
 using KodlamaIoModelleme.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KodlamaIoModelleme.Business.Concretes;
 
@@ -30,22 +27,44 @@ public class InstructionManager : IInstructionService
         _instructionDal.Add(instructionToCreate);
     }
 
-    public List<GetAllInstructionResponse> GetInstructions()
+    public void Delete(DeleteInstructionRequest instruction)
+    {
+        Instruction instructionToDelete = new Instruction();
+        instructionToDelete.Id = instruction.Id;
+        _instructionDal.Delete(instructionToDelete);
+    }
+
+    public List<GetByIdInstructionResponse> GetById(int id)
+    {
+        List<GetByIdInstructionResponse> instructions = new List<GetByIdInstructionResponse>();
+        _instructionDal.GetById(id);
+        return instructions;
+    }
+
+    public List<GetAllInstructionResponse> GetAll()
     {
         List<GetAllInstructionResponse> instructions = new List<GetAllInstructionResponse>();
 
-        foreach (var item in _instructionDal.GetInstructions())
+        foreach (var instruction in _instructionDal.GetAll())
         {
             GetAllInstructionResponse getAllInstructionResponse = new GetAllInstructionResponse();
-            getAllInstructionResponse.Id = item.Id;
-            getAllInstructionResponse.Name = item.Name;
-            getAllInstructionResponse.Description = item.Description;
-            getAllInstructionResponse.InstructorId = item.InstructorId;
-            getAllInstructionResponse.ImageUrl = item.ImageUrl;
-            getAllInstructionResponse.Price = item.Price;
+            getAllInstructionResponse.Id = instruction.Id;
+            getAllInstructionResponse.Name = instruction.Name;
+            getAllInstructionResponse.Description = instruction.Description;
+            getAllInstructionResponse.InstructorId = instruction.InstructorId;
+            getAllInstructionResponse.ImageUrl = instruction.ImageUrl;
+            getAllInstructionResponse.Price = instruction.Price;
 
             instructions.Add(getAllInstructionResponse);
         }
         return instructions;
+    }
+
+    public void Update(UpdateInstructionRequest instruction)
+    {
+        Instruction instructionToUpdate = new Instruction();
+        instructionToUpdate.Id = instruction.Id;
+        instructionToUpdate.Name = instruction.Name;
+        _instructionDal.Update(instructionToUpdate);
     }
 }

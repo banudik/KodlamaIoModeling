@@ -1,10 +1,5 @@
 ﻿using KodlamaIoModelleme.DataAccess.Abstracts;
 using KodlamaIoModelleme.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KodlamaIoModelleme.DataAccess.Concretes.InMemory;
 
@@ -14,7 +9,8 @@ public class ImCategoryDal:ICategoryDal
 
     public ImCategoryDal()
     {
-        categories.Add(new Category(1, "Programlama"));
+        categories.Add(new Category (1, "Tümü" ));
+        categories.Add(new Category(2, "Programlama"));
         
     }
 
@@ -34,7 +30,7 @@ public class ImCategoryDal:ICategoryDal
         return categories;
     }
 
-    public Category GetCategory(int id)
+    public Category GetById(int id)
     {
         var value = categories.FirstOrDefault(c => c.Id == id);
         return value;

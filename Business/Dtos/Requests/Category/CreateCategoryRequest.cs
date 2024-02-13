@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KodlamaIoModelleme.Business.Dtos.Responses;
+namespace KodlamaIoModelleme.Business.Dtos.Requests.Category;
 
-public class GetAllCategoryResponse
+public class CreateCategoryRequest
 {
-    public int Id { get; set; }
     public string Name { get; set; }
-    //public List<Instruction> Instructions { get; set; }
+    
 }

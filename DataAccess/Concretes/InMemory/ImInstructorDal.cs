@@ -27,7 +27,7 @@ public class ImInstructorDal : IInstructorDal
         instructors.Remove(value);
     }
 
-    public Instructor GetInstructor(int id)
+    public Instructor GetById (int id)
     {
         var value = instructors.FirstOrDefault(i => i.InstructorId == id);
         return value;
@@ -43,5 +43,6 @@ public class ImInstructorDal : IInstructorDal
         var value = instructors.FirstOrDefault(i => i.InstructorId == instructor.InstructorId);
         value.FirstName = instructor.FirstName;
         value.LastName = instructor.LastName;
+        value.ImageUrl = instructor.ImageUrl;
     }
 }

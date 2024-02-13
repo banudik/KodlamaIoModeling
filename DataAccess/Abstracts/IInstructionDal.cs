@@ -12,6 +12,6 @@ public interface IInstructionDal
     void Add(Instruction instruction);
     void Delete(Instruction instruction);
     void Update(Instruction instruction);
-    List<Instruction> GetInstructions();
-    Instruction GetInstruction(int id);
+    List<Instruction> GetAll();
+    Instruction GetById (int id);
 }

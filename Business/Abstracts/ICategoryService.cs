@@ -1,15 +1,13 @@
-﻿using KodlamaIoModelleme.Business.Dtos.Requests;
-using KodlamaIoModelleme.Business.Dtos.Responses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using KodlamaIoModelleme.Business.Dtos.Requests.Category;
+using KodlamaIoModelleme.Business.Dtos.Responses.Category;
 
 namespace KodlamaIoModelleme.Business.Abstracts;
 
 public interface ICategoryService
 {
     void Add(CreateCategoryRequest category);
-    List<GetAllCategoryResponse> GetCategories();
+    void Delete(DeleteCategoryRequest category);
+    void Update(UpdateCategoryRequest category);
+    List<GetAllCategoryResponse> GetAll();
+    List<GetByIdCategoryResponse> GetById(int id);
 }

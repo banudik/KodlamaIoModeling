@@ -12,7 +12,7 @@ public class Instructor
     {
         
     }
-    public Instructor(int instructorId, string firstName, string lastName, string imageUrl)
+    public Instructor(int instructorId, string firstName, string lastName, string imageUrl) 
     {
         InstructorId = instructorId;
         FirstName = firstName;

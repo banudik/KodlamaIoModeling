@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KodlamaIoModelleme.Business.Dtos.Responses;
+namespace KodlamaIoModelleme.Business.Dtos.Requests.Instruction;
 
-public class GetAllInstructionResponse
+public class CreateInstructionRequest
 {
-    public int Id { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
     public int InstructorId { get; set; }

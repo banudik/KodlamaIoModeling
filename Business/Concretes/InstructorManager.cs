@@ -1,13 +1,9 @@
 ﻿using KodlamaIoModelleme.Business.Abstracts;
-using KodlamaIoModelleme.Business.Dtos.Requests;
-using KodlamaIoModelleme.Business.Dtos.Responses;
+using KodlamaIoModelleme.Business.Dtos.Requests.Instructor;
+using KodlamaIoModelleme.Business.Dtos.Responses.Instructor;
 using KodlamaIoModelleme.DataAccess.Abstracts;
+using KodlamaIoModelleme.DataAccess.Concretes.InMemory;
 using KodlamaIoModelleme.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KodlamaIoModelleme.Business.Concretes;
 
@@ -29,20 +25,46 @@ public class InstructorManager : IInstructorService
         _instructorDal.Add(instructorToCreate);
     }
 
-    public List<GetAllInstructorResponse> GetInstructors()
+    public void Delete(DeleteInstructorRequest instructor)
+    {
+        Instructor instructorToDelete = new Instructor();
+        instructorToDelete.InstructorId = instructor.Id;
+        _instructorDal.Delete(instructorToDelete);
+
+    }
+
+    public List<GetByIdInstructorResponse> GetById(int id)
+    {
+        List<GetByIdInstructorResponse> instructors = new List<GetByIdInstructorResponse>();
+        _instructorDal.GetById(id);
+        return instructors;
+
+    }
+
+    public List<GetAllInstructorResponse> GetAll()
     {
         List<GetAllInstructorResponse> instructors = new List<GetAllInstructorResponse>();
 
-        foreach (var item in _instructorDal.GetInstructors())
+        foreach (var instructor in _instructorDal.GetAll())
         {
             GetAllInstructorResponse getAllInstructorResponse = new GetAllInstructorResponse();
-            getAllInstructorResponse.InstructorId = item.InstructorId;
-            getAllInstructorResponse.FirstName = item.FirstName;
-            getAllInstructorResponse.LastName = item.LastName;
-            getAllInstructorResponse.ImageUrl = item.ImageUrl;
+            getAllInstructorResponse.InstructorId = instructor.InstructorId;
+            getAllInstructorResponse.FirstName = instructor.FirstName;
+            getAllInstructorResponse.LastName = instructor.LastName;
+            getAllInstructorResponse.ImageUrl = instructor.ImageUrl;
 
             instructors.Add(getAllInstructorResponse);
         }
         return instructors;
+    }
+
+    public void Update(UpdateInstructorRequest instructor)
+    {
+        Instructor instructorToUpdate = new Instructor();
+        instructorToUpdate.InstructorId = instructor.InstructorId;
+        instructorToUpdate.FirstName = instructor.FirstName;
+        instructorToUpdate.LastName = instructor.LastName;
+        instructorToUpdate.ImageUrl = instructor.ImageUrl;
+        _instructorDal.Update(instructorToUpdate);
     }
 }
