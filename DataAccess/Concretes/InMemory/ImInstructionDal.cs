@@ -40,7 +40,7 @@ public class ImInstructionDal : IInstructionDal
         return value;
     }
 
-    public List<Instruction> GetInstructions()
+    public List<Instruction> GetAll()
     {
         return instructions;
     }

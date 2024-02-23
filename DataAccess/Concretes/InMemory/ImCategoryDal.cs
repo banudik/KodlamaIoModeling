@@ -25,7 +25,7 @@ public class ImCategoryDal:ICategoryDal
         categories.Remove(value);
     }
 
-    public List<Category> GetCategories()
+    public List<Category> GetAll()
     {
         return categories;
     }
